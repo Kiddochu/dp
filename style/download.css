@@ -125,78 +125,84 @@ header {
   padding: 0 2rem;
 }
 
-.title {
-  font-size: 35px;
-}
-
 p {
-  font-size: 18px;
+  font-size: 27px;
 }
 
-.btn {
-  margin-left: 24%;
-  margin-top: 1rem;
-	line-height: 50px;
-	height: 50px;
-	width: 250px;
-	cursor: pointer;
-  font-size: 21px;
+a {
+  text-decoration: none;
 }
 
-.btn-one {
-	color: #FFF;
-	transition: all 0.3s;
-	position: relative;
+.Button__textWrapper, .Button__text, .Button__icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
 }
 
-.btn-one span {
-	transition: all 0.3s;
+.Button__text, .Button__icon {
+  transition: top 500ms;
 }
 
-.btn-one::before {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: rgba(255,255,255,0.5);
-	border-bottom-color: rgba(255,255,255,0.5);
-	transform: scale(0.1, 1);
+.Button {
+  display: inline-block;
+  position: relative;
+  background-color: #0cbaba;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 1000px;
+  width: 180px;
+  height: 60px;
+  margin-top: 6px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7), inset 0 1px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  transition: background-color 500ms, transform 100ms;
 }
 
-.btn-one:hover span {
-	letter-spacing: 2px;
+.Button__textWrapper {
+  overflow: hidden;
 }
 
-.btn-one:hover::before {
-	opacity: 1;	
-	transform: scale(1, 1);	
+.Button__text {
+  line-height: 60px;
+  top: 0;
 }
 
-.btn-one::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	transition: all 0.3s;
-	background-color: rgba(255,255,255,0.1);
+.Button__icon {
+  top: 100%;
+  background: url('https://cl.ly/0X3o100h2H0g/icon-download.svg') no-repeat center center;
 }
 
-.btn-one:hover::after {
-	opacity: 0;	
-	transform: scale(0.1, 1);
+.Button:hover {
+  background-color: #01baef;
 }
+
+.Button:hover .Button__text {
+  top: -100%;
+}
+
+.Button:hover .Button__icon {
+  top: 0;
+}
+
+.Button:hover::before, .Button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.Button:hover::after {
+  bottom: 60px;
+}
+
+.Button:hover::before {
+  bottom: 80px;
+}
+
+.Button:active {
+  transform: translate(2px, 2px);
+}
+
+
 
 .container.active .bar {
   transform: rotate(360deg);
