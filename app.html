@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/app.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+          <div class="menu">
+            <h3 class="logo">Контрол на достъп</h3>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="main-container">
+          <div class="main">
+            <header>
+              <div class="overlay">
+                <div class="inner">
+                    <div class="wrapper">
+                        <div class="title">
+                            <h1>ЗАЯВКА ЗА ДОСТЪП</h1>
+                            <p>ПОПЪЛНЕТЕ ПОЛЕТАТА</p>
+                        </div>
+                        <div class="form">
+                            <select class="service">
+                                <option value="" disabled selected hidden>Изберете услуга</option>
+                                <option value="услуга 1">Услуга 1</option>
+                                <option value="услуга 2">Услуга 2</option>
+                                <option value="услуга 3">Услуга 3</option>
+                                <option value="услуга 4">Услуга 4</option>
+                            </select>
+                    <div class="inputBox">
+                        <input type="text" required="required" class="firstName">
+                        <span>Име</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" required="required" class="lastName">
+                        <span>Фамилия</span>
+                    </div>
+                    <a href="#" onclick="submit()">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>ПОДАЙ ЗАЯВКА</a>
+                        </div>
+                        <div class="qr-code">
+                            <img class="qrImage" src="" alt="qr code" width="170px">
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </header>
+          </div>
+          <div class="shadow one"></div>
+          <div class="shadow two"></div>
+        </div>
+        <div class="links">
+          <ul>
+            <li>
+              <a href="index.html" style="--i: 0.05s;">Начало</a>
+            </li>
+            <li>
+              <a href="app.html" style="--i: 0.1s;">Приложението</a>
+            </li>
+            <li>
+              <a href="howtouseit.html" style="--i: 0.15s;">Как се използва</a>
+            </li>
+            <li>
+              <a href="download.html" style="--i: 0.2s;">Изтегли</a>
+            </li>
+            <li>
+              <a href="contact.html" style="--i: 0.25s;">Контакт</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <script>
+        const hamburger_menu = document.querySelector(".hamburger-menu");
+const container = document.querySelector(".container");
+
+hamburger_menu.addEventListener("click", () => {
+  container.classList.toggle("active");
+});
+
+
+var wrapper = document.getElementsByClassName("wrapper")[0];
+var button = document.getElementsByClassName("button")[0];
+var firstName = document.getElementsByClassName("firstName")[0];
+var lastName = document.getElementsByClassName("lastName")[0];
+var service = document.getElementsByClassName("service")[0];
+var qrImage = document.getElementsByClassName("qrImage")[0];
+
+
+function submit() {
+    var qrValue = firstName.value + " " + lastName.value + " е записан за услуга " + service.value;
+
+    if(!(firstName.value && lastName.value && service.value)) {
+        alert("Има празно място");
+        return;
+    }
+    qrImage.src = `http://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${qrValue}`;
+
+    wrapper.classList.add("active");
+}
+    </script>
+</body>
+</html>
